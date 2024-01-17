@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mod="clr-namespace:Proyecto_DI.Modelo"
+             x:DataType="mod:Usuario"
+             x:Class="Proyecto_DI.Template.Template">
+
+    <Grid ColumnDefinitions="*, *, *, *" BackgroundColor="Grey">
+        <Label Text="{Binding Id}" Grid.Column="0" Padding="5" HorizontalTextAlignment="Center" BackgroundColor="LightBlue"/>
+        <Label Text="{Binding Nombre}" Grid.Column="1" Padding="5" HorizontalTextAlignment="Center" BackgroundColor="AliceBlue"/>
+        <Label Text="{Binding Nick}" Grid.Column="2" Padding="5" HorizontalTextAlignment="Center" BackgroundColor="LightBlue"/>
+        <Label Text="{Binding Edad}"  Grid.Column="3" Padding="5" HorizontalTextAlignment="Center" BackgroundColor="AliceBlue"/>
+    </Grid>
+</ContentView>

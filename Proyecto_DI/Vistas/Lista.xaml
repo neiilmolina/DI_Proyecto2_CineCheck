@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ts="clr-namespace:Proyecto_DI.Template"
+             xmlns:vm="clr-namespace:Proyecto_DI.VistaModelo"
+             x:Class="Proyecto_DI.Vistas.Lista"
+             Title="Lista">
+    <ContentPage.BindingContext>
+        <vm:ListaVM/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid RowDefinitions="100, 40, *"
+     Padding="5">
+            <Grid Grid.Row="0" >
+                <Label Text="Usuarios" VerticalOptions="Center" BackgroundColor="Gray" FontSize="25" HorizontalTextAlignment="Center"/>
+            </Grid>
+            <Grid ColumnDefinitions="*, *, *, *"
+     Grid.Row="1">
+                <Label Text="Id" Grid.Row="0" Grid.Column="0" Padding="10" HorizontalTextAlignment="Center" BackgroundColor="LightBlue"/>
+                <Label Text="Nombre" Grid.Row="0" Grid.Column="1" Padding="10" HorizontalTextAlignment="Center" BackgroundColor="AliceBlue"/>
+                <Label Text="Nick" Grid.Row="0" Grid.Column="2" Padding="10" HorizontalTextAlignment="Center" BackgroundColor="LightBlue"/>
+                <Label Text="Edad" Grid.Row="0" Grid.Column="3" Padding="10" HorizontalTextAlignment="Center" BackgroundColor="AliceBlue"/>
+            </Grid>
+            <CollectionView x:Name="lista" Grid.Row="2" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ts:Template/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Proyecto_DI.VistaModelo"
+             x:Class="Proyecto_DI.Vistas.Login"
+             Title="Login">
+    <ContentPage.BindingContext>
+        <vm:LoginVM/>
+    </ContentPage.BindingContext>
+    <ScrollView 
+        Padding="30,0"
+        VerticalOptions="Center">
+
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="15" Padding="20">
+            <Label Text="Bienvenido" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
+            <Label Text="Inicia Sesión" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center"/>
+
+            <Frame HeightRequest="45" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Entry Placeholder="Nick Name" Text="{Binding Nick}" VerticalOptions="Center"/>
+            </Frame>
+            <CollectionView ItemsSource="{Binding ErrorNick}" BackgroundColor="Red"/>
+
+            <Frame HeightRequest="45" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" VerticalOptions="Center"/>
+            </Frame>
+            <CollectionView ItemsSource="{Binding ErrorPass}" BackgroundColor="Red"/>
+
+
+            <Button Text="Inicia Sesión" Command="{Binding validarCommand}" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Background="#0792ef"/>
+
+            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                <Label Text="¿No tienes cuenta?" TextColor="Gray"/>
+                <Label Text="Registrate aquí" 
+                   TextColor="#50b3f2"
+                   TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding cambiarAregisterCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
