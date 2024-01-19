@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto_DI.Vistas.PaginaPrincipal"
+             Title="PaginaPrincipal"
+             xmlns:te="clr-namespace:Proyecto_DI.Template">
+    <ScrollView>
+        <CollectionView x:Name="listaPeliculas">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <te:Pelicula_Template/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>

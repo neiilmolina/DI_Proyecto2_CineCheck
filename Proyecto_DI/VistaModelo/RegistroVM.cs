@@ -70,6 +70,7 @@ namespace Proyecto_DI.VistaModelo
         [RelayCommand]
         public async Task validarAsync()
         {
+            contErr = 0;
             ValidateAllProperties();
             ErrorNick.Clear();
             ErrorNombre.Clear();

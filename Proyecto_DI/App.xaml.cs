@@ -15,4 +15,6 @@ public partial class App : Application
 
         MainPage = new AppShell();
     }
+
+    // hacer un constructor en el que recoja los datos de la api
 }
