@@ -35,4 +35,11 @@ public partial class PaginaPrincipal : ContentPage
 	{
 		listaPeliculas.ItemsSource = peliculas;
     }
+
+    private void buscarPeliculas(object sender, EventArgs e)
+    {
+        List<Pelicula> results = peliculas.Where(cadena => cadena.title.Contains(buscador.Text)).ToList();
+		ObservableCollection<Pelicula> lista = new ObservableCollection<Pelicula>(results);
+        listaPeliculas.ItemsSource = results;
+    }
 }

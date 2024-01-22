@@ -4,14 +4,21 @@
              x:Class="Proyecto_DI.Template.Pelicula_Template"
              xmlns:mo="clr-namespace:Proyecto_DI.Modelo"
              x:DataType="mo:Pelicula">
-    
-    <Grid RowDefinitions="auto,auto,auto,auto">
-        <Label Text="Imagen" Grid.Row="0"/>
-        <Label Grid.Row="1" Text="{Binding title}"/>
-        <HorizontalStackLayout Spacing="2" Grid.Row="2">
-            <Label Text="{Binding original_language}"/>
-            <Label Text="{Binding vote_average}"/>
-        </HorizontalStackLayout>
-        <Label Grid.Row="3" Text="{Binding overview}"/>
-    </Grid>
+
+    <Border Stroke="BlueViolet" StrokeThickness="3" Margin="16" Padding="10" HorizontalOptions="FillAndExpand" WidthRequest="325" HeightRequest="550">
+        <Grid RowDefinitions="auto,auto,auto,auto">
+            <Label Grid.Row="1" Text="{Binding title}"/>
+            <HorizontalStackLayout Spacing="2" Grid.Row="2">
+                <HorizontalStackLayout Spacing="2">
+                    <Label Text="Votos: "/>
+                    <Label Text="{Binding vote_average}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="2">
+                    <Label Text="Idioma: "/>
+                    <Label Text="{Binding original_language}"/>
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+            <Label Grid.Row="3" Text="{Binding overview}"/>
+        </Grid>
+    </Border>
 </ContentView>
