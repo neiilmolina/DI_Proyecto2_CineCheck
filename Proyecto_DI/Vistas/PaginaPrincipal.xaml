@@ -6,7 +6,15 @@
              xmlns:te="clr-namespace:Proyecto_DI.Template">
     <ScrollView>
         <VerticalStackLayout>
-            <SearchBar x:Name="buscador" SearchButtonPressed="buscarPeliculas"/>
+            <HorizontalStackLayout Spacing="2">
+                <Picker SelectedIndexChanged="pickerSeleccion">
+                    <Picker.Items>
+                        <x:String>Título</x:String>
+                        <x:String>Idioma</x:String>
+                    </Picker.Items>
+                </Picker>
+                <SearchBar x:Name="buscador" SearchButtonPressed="buscarPeliculas"/>
+            </HorizontalStackLayout>
 
             <CollectionView x:Name="listaPeliculas">
                 <CollectionView.ItemsLayout>

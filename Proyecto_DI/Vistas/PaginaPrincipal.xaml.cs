@@ -7,6 +7,7 @@ namespace Proyecto_DI.Vistas;
 public partial class PaginaPrincipal : ContentPage
 {
 	private ObservableCollection<Pelicula> peliculas = new ObservableCollection<Pelicula>();
+	private String seleccion;
 
 
     public PaginaPrincipal()
@@ -38,8 +39,26 @@ public partial class PaginaPrincipal : ContentPage
 
     private void buscarPeliculas(object sender, EventArgs e)
     {
-        List<Pelicula> results = peliculas.Where(cadena => cadena.title.Contains(buscador.Text)).ToList();
+		List<Pelicula> results = new List<Pelicula>(peliculas);
+
+		switch (seleccion) 
+		{
+			case "Título":
+                results = peliculas.Where(pelicula => pelicula.title.Contains(buscador.Text)).ToList();
+                break;
+			case "Idioma":
+                results = peliculas.Where(pelicula => pelicula.original_language.Contains(buscador.Text)).ToList();
+				break;
+        }
+
 		ObservableCollection<Pelicula> lista = new ObservableCollection<Pelicula>(results);
         listaPeliculas.ItemsSource = results;
+    }
+
+    private void pickerSeleccion(object sender, EventArgs e)
+    {
+        Picker picker = (Picker)sender;
+
+        seleccion = picker.SelectedItem as String;
     }
 }
