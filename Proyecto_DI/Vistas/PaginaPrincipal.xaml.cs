@@ -61,4 +61,17 @@ public partial class PaginaPrincipal : ContentPage
 
         seleccion = picker.SelectedItem as String;
     }
+
+    private async Task cerrarSesionAsync(object sender, EventArgs e)
+    {
+        var resultado = await DisplayActionSheet("Ayuda", "Cancelar", null, "Si", "No");
+        switch (resultado)
+        {
+            case "Si":
+                {
+                    await AppShell.Current.GoToAsync(nameof(Login));
+                    break;
+                }
+        }
+    }
 }

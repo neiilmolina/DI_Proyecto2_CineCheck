@@ -4,16 +4,22 @@
              x:Class="Proyecto_DI.Vistas.PaginaPrincipal"
              Title="PaginaPrincipal"
              xmlns:te="clr-namespace:Proyecto_DI.Template">
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Archivo">
+            <MenuFlyoutItem Text="Archivo1" Clicked="cerrarSesion"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
     <ScrollView>
         <VerticalStackLayout>
             <HorizontalStackLayout Spacing="2">
-                <Picker SelectedIndexChanged="pickerSeleccion">
+                <Picker SelectedIndexChanged="pickerSeleccion" WidthRequest="150">
                     <Picker.Items>
                         <x:String>Título</x:String>
                         <x:String>Idioma</x:String>
                     </Picker.Items>
                 </Picker>
-                <SearchBar x:Name="buscador" SearchButtonPressed="buscarPeliculas"/>
+                <SearchBar x:Name="buscador" SearchButtonPressed="buscarPeliculas" WidthRequest="800"/>
             </HorizontalStackLayout>
 
             <CollectionView x:Name="listaPeliculas">
