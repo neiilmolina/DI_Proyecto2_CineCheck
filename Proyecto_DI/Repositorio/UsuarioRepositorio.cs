@@ -44,6 +44,32 @@ namespace Proyecto_DI.Repositorio
             return resultado;
         }
 
+        public Usuario obtenerUsuario(int id)
+        {
+            Usuario usuario = new Usuario();   
+            ObservableCollection<Usuario> listaUsuarios = listarUsuario();
+            List<Usuario> lista = new List<Usuario>(listaUsuarios);
+
+            int cont = 0;
+            bool encontrado = false;
+
+            while (cont <= lista.Count && !encontrado) 
+            {
+                if (lista[cont].Id == id) 
+                {
+                    usuario = lista[cont];
+                    encontrado = true;
+                } 
+                else 
+                {
+                    cont++;
+                }
+            }
+
+            return usuario;
+
+        }
+
         public ObservableCollection<Usuario> listarUsuario()
         {
             List<Usuario> lista = conexion.Table<Usuario>().ToList();

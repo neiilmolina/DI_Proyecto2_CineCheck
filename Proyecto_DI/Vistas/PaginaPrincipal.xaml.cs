@@ -64,7 +64,7 @@ public partial class PaginaPrincipal : ContentPage
 
     private async void cerrarSesion(object sender, EventArgs e)
     {
-        bool respuesta = await DisplayAlert("¿Deseas cerrar sesión?", null, "Si", "No");
+        bool respuesta = await DisplayAlert("Cerrar Sesión", "¿Deseas cerrar sesión?", "Si", "No");
         if (respuesta) 
         {
             _ = cambiarLogin();

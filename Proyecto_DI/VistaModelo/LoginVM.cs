@@ -16,6 +16,7 @@ namespace Proyecto_DI.VistaModelo
 
         public ObservableCollection<string> ErrorNick { get; set; } = new ObservableCollection<string>();
         public ObservableCollection<string> ErrorPass { get; set; } = new ObservableCollection<string>();
+        public static bool usuarioEncontrado { get; set; } = false;
 
         public String nick;
         [Required(ErrorMessage = "Debes introducir un nick")]
@@ -36,15 +37,17 @@ namespace Proyecto_DI.VistaModelo
         [RelayCommand]
         public async Task validarAsync()
         {
+            int contErr = 0;
             ValidateAllProperties();
             ErrorNick.Clear();
             ErrorPass.Clear();
-            GetErrors(nameof(Nick)).ToList().ForEach(f => ErrorNick.Add(f.ErrorMessage));
-            GetErrors(nameof(Password)).ToList().ForEach(f => ErrorPass.Add(f.ErrorMessage));
+            GetErrors(nameof(Nick)).ToList().ForEach(f => { ErrorNick.Add(f.ErrorMessage); contErr++; });
+            GetErrors(nameof(Password)).ToList().ForEach(f => { ErrorPass.Add(f.ErrorMessage);  contErr++; } );
             
             if (App.usuarioRepositorio.verUsuario(Nick, Password))
             {
-                await AppShell.Current.GoToAsync(nameof(Vistas.Lista));
+                usuarioEncontrado = true;
+                await AppShell.Current.GoToAsync(nameof(Vistas.PaginaPrincipal));
             }
 
         }
