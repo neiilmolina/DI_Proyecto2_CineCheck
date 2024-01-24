@@ -11,5 +11,27 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
+        <ControlTemplate x:Key="plantilla">
+            <Grid RowDefinitions="auto,*,auto" >
+                <HorizontalStackLayout Grid.Row="0">
+                    <Image x:Name="imagenUsuario"/>
+                    <Label x:Name="nombreUsuario"/>
+                </HorizontalStackLayout>
+                
+                <ContentPresenter Grid.Row="1"/>
+                
+                <HorizontalStackLayout Grid.Row="2">
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Start">
+                        <Image/>
+                        <Label Text="Linkedin"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="End">
+                        <Image/>
+                        <Label Text="GitHub"/>
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+            </Grid>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>
