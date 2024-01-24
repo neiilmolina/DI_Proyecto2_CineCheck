@@ -85,8 +85,17 @@ namespace Proyecto_DI.VistaModelo
 
             if (contErr == 0)
             {
-                App.usuarioRepositorio.add(new Modelo.Usuario { Nick = Nick, Nombre = Nombre, Edad = int.Parse(edad), Password = Password });
-                await AppShell.Current.GoToAsync(nameof(Vistas.Login));
+                if (!App.usuarioRepositorio.verNickIgual(Nick))
+                {
+                    App.usuarioRepositorio.add(new Modelo.Usuario { Nick = Nick, Nombre = Nombre, Edad = int.Parse(edad), Password = Password });
+                    await Application.Current.MainPage.DisplayAlert("Registro", "Registro con existo", "Ok");
+                    _ = cambiarAloginAsync();
+                }
+                else 
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error en el nick", "El nick ya existe", "Ok");
+                }
+
             }
 
         }

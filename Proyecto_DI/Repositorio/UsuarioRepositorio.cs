@@ -44,7 +44,22 @@ namespace Proyecto_DI.Repositorio
             return resultado;
         }
 
-        public Usuario obtenerUsuario(int id)
+        public bool verNickIgual (String nick) 
+        {
+            bool resultado = false;
+            List<Usuario> lista = new List<Usuario>(listarUsuario());
+
+            lista.ForEach(action =>
+            {
+                if (action.Nick.Equals(nick))
+                {
+                    resultado = true;
+                }
+            });
+            return resultado;
+        }
+
+        public Usuario obtenerUsuario(String nick)
         {
             Usuario usuario = new Usuario();   
             ObservableCollection<Usuario> listaUsuarios = listarUsuario();
@@ -55,12 +70,38 @@ namespace Proyecto_DI.Repositorio
 
             while (cont <= lista.Count && !encontrado) 
             {
-                if (lista[cont].Id == id) 
+                if (lista[cont].Nick == nick) 
                 {
                     usuario = lista[cont];
                     encontrado = true;
                 } 
                 else 
+                {
+                    cont++;
+                }
+            }
+
+            return usuario;
+
+        }
+
+        public Usuario obtenerUsuario(int id)
+        {
+            Usuario usuario = new Usuario();
+            ObservableCollection<Usuario> listaUsuarios = listarUsuario();
+            List<Usuario> lista = new List<Usuario>(listaUsuarios);
+
+            int cont = 0;
+            bool encontrado = false;
+
+            while (cont <= lista.Count && !encontrado)
+            {
+                if (lista[cont].Id == id)
+                {
+                    usuario = lista[cont];
+                    encontrado = true;
+                }
+                else
                 {
                     cont++;
                 }

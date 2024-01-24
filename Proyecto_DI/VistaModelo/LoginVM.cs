@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Proyecto_DI.Modelo;
 using Proyecto_DI.Repositorio;
+using Proyecto_DI.Vistas;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,12 +45,20 @@ namespace Proyecto_DI.VistaModelo
             ErrorPass.Clear();
             GetErrors(nameof(Nick)).ToList().ForEach(f => { ErrorNick.Add(f.ErrorMessage); contErr++; });
             GetErrors(nameof(Password)).ToList().ForEach(f => { ErrorPass.Add(f.ErrorMessage);  contErr++; } );
-            
+
             if (App.usuarioRepositorio.verUsuario(Nick, Password))
             {
+                Usuario usuario = App.usuarioRepositorio.obtenerUsuario(Nick);
                 usuarioEncontrado = true;
+                await Application.Current.MainPage.DisplayAlert("Iniciar Sesión", "Inicio de sesión con éxito", "Ok");
+                Preferences.Default.Set(App.usuario_id, usuario.Id);
                 await AppShell.Current.GoToAsync(nameof(Vistas.PaginaPrincipal));
             }
+            else 
+            { 
+                await Application.Current.MainPage.DisplayAlert("Iniciar Sesión", "No se puede Iniciar Sesión", "Ok");
+            }
+
 
         }
 

@@ -26,7 +26,7 @@
             <CollectionView ItemsSource="{Binding ErrorPass}" BackgroundColor="Red"/>
 
 
-            <Button x:Name="btnLogin" Text="Inicia Sesión" Command="{Binding validarCommand}" Clicked="iniciarSesion" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Background="#0792ef"/>
+            <Button x:Name="btnLogin" Text="Inicia Sesión" Command="{Binding validarCommand}" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Background="#0792ef"/>
 
             <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
                 <Label Text="¿No tienes cuenta?" TextColor="Gray"/>

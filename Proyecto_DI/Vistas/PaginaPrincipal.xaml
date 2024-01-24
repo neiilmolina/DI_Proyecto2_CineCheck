@@ -7,11 +7,13 @@
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="Opciones">
             <MenuFlyoutItem Text="Cerrar Sesión" Clicked="cerrarSesion"/>
+            <MenuFlyoutItem Text="Lista de Favoritos" Clicked="listarFavoritos"/>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
 
     <ScrollView>
         <VerticalStackLayout>
+            <Label x:Name="nombreUsuario"/>
             <HorizontalStackLayout Spacing="2">
                 <Picker SelectedIndexChanged="pickerSeleccion" WidthRequest="150">
                     <Picker.Items>
@@ -24,7 +26,7 @@
 
             <CollectionView x:Name="listaPeliculas">
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout Span="3" Orientation="Vertical" />
+                    <GridItemsLayout Span="2" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

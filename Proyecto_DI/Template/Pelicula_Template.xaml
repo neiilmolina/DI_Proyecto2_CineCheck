@@ -5,20 +5,25 @@
              xmlns:mo="clr-namespace:Proyecto_DI.Modelo"
              x:DataType="mo:Pelicula">
 
-    <Border Stroke="BlueViolet" StrokeThickness="3" Margin="16" Padding="10" HorizontalOptions="FillAndExpand" WidthRequest="325" HeightRequest="550">
-        <Grid RowDefinitions="auto,auto,auto,auto">
-            <Label Grid.Row="1" Text="{Binding title}"/>
-            <HorizontalStackLayout Spacing="2" Grid.Row="2">
+    <Border Stroke="BlueViolet" StrokeThickness="3" Margin="16" Padding="15" HorizontalOptions="FillAndExpand" WidthRequest="600" MinimumHeightRequest="300" MaximumHeightRequest="600">
+        <VerticalStackLayout Spacing="20">
+            <Label Text="{Binding title}" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Image />
+            <HorizontalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
                 <HorizontalStackLayout Spacing="2">
-                    <Label Text="Votos: "/>
+                    <Label Text="Votes: "/>
                     <Label Text="{Binding vote_average}"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout Spacing="2">
-                    <Label Text="Idioma: "/>
+                    <Label Text="Language: "/>
                     <Label Text="{Binding original_language}"/>
                 </HorizontalStackLayout>
             </HorizontalStackLayout>
-            <Label Grid.Row="3" Text="{Binding overview}"/>
-        </Grid>
+            <HorizontalStackLayout Spacing="2" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Release date:"/>
+                <Label Text="{Binding release_date}" />
+            </HorizontalStackLayout>
+            <Label Text="{Binding overview}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
     </Border>
 </ContentView>
