@@ -1,15 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Proyecto_DI.Modelo;
-using Proyecto_DI.Repositorio;
-using Proyecto_DI.Vistas;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proyecto_DI.VistaModelo
 {
@@ -18,7 +11,6 @@ namespace Proyecto_DI.VistaModelo
 
         public ObservableCollection<string> ErrorNick { get; set; } = new ObservableCollection<string>();
         public ObservableCollection<string> ErrorPass { get; set; } = new ObservableCollection<string>();
-        public static bool usuarioEncontrado { get; set; } = false;
 
         public String nick;
         [Required(ErrorMessage = "Debes introducir un nick")]
@@ -38,7 +30,7 @@ namespace Proyecto_DI.VistaModelo
 
         [RelayCommand]
         public async Task validarAsync()
-        {
+        {  
             int contErr = 0;
             ValidateAllProperties();
             ErrorNick.Clear();
@@ -49,7 +41,6 @@ namespace Proyecto_DI.VistaModelo
             if (App.usuarioRepositorio.verUsuario(Nick, Password))
             {
                 Usuario usuario = App.usuarioRepositorio.obtenerUsuario(Nick);
-                usuarioEncontrado = true;
                 await Application.Current.MainPage.DisplayAlert("Iniciar Sesión", "Inicio de sesión con éxito", "Ok");
                 Preferences.Default.Set(App.usuario_id, usuario.Id);
                 await AppShell.Current.GoToAsync(nameof(Vistas.PaginaPrincipal));

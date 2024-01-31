@@ -9,29 +9,37 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <ControlTemplate x:Key="plantilla">
+                <Grid RowDefinitions="auto,*,auto" >
+                    <HorizontalStackLayout Grid.Row="0" BackgroundColor="#50b3f2" HeightRequest="80" Padding="15">
+                        <Image x:Name="imagenUsuario" VerticalOptions="Center" Source="user.png"/>
+                        <Label x:Name="nombreUsuario" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <ContentPresenter Grid.Row="1"/>
+
+                    <HorizontalStackLayout Grid.Row="2" Spacing="80" BackgroundColor="#50b3f2" HeightRequest="80" Padding="15" Margin="0">
+                        <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="linkedin.png" HorizontalOptions="Center" VerticalOptions="Center" Scale="1"/>
+                            <Label Text="Linkedin" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding linkedinGesture}" CommandParameter="https://www.linkedin.com/in/neil-adri%C3%A1n-molina-arellano-a9b842272-desarrollador-aplicaciones/"/>
+                                </Label.GestureRecognizers>
+                            </Label> 
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="github.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="GitHub" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding linkedinGesture}" CommandParameter="https://github.com/neiilmolina"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </HorizontalStackLayout>
+                </Grid>
+            </ControlTemplate>
+            
         </ResourceDictionary>
-
-        <ControlTemplate x:Key="plantilla">
-            <Grid RowDefinitions="auto,*,auto" >
-                <HorizontalStackLayout Grid.Row="0">
-                    <Image x:Name="imagenUsuario"/>
-                    <Label x:Name="nombreUsuario"/>
-                </HorizontalStackLayout>
-                
-                <ContentPresenter Grid.Row="1"/>
-                
-                <HorizontalStackLayout Grid.Row="2">
-                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Start">
-                        <Image/>
-                        <Label Text="Linkedin"/>
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout Spacing="5" HorizontalOptions="End">
-                        <Image/>
-                        <Label Text="GitHub"/>
-                    </HorizontalStackLayout>
-                </HorizontalStackLayout>
-            </Grid>
-        </ControlTemplate>
-
     </Application.Resources>
 </Application>

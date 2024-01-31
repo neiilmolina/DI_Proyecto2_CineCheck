@@ -5,9 +5,10 @@
              xmlns:mo="clr-namespace:Proyecto_DI.Modelo"
              x:DataType="mo:Pelicula">
 
-    <Border Stroke="BlueViolet" StrokeThickness="3" Margin="16" Padding="15" HorizontalOptions="FillAndExpand"  WidthRequest="670" MinimumHeightRequest="320" MaximumHeightRequest="620">
+    <Border Stroke="Gray" StrokeThickness="3" Margin="16" Padding="15" HorizontalOptions="FillAndExpand"  WidthRequest="670" MinimumHeightRequest="420" MaximumHeightRequest="620">
         <VerticalStackLayout Spacing="20">
-            <Button x:Name="btnFavoritos" Text="☆" FontSize="Medium" HorizontalOptions="End" BackgroundColor="Black" BorderColor="Black" TextColor="White"/>
+            <Label x:Name="lblPelicula" Text="{Binding id}" IsVisible="false"/>
+            <Button x:Name="btnFavoritos" Text="★" Clicked="cambiarFavoritos" FontSize="Large" HorizontalOptions="End" BorderColor="White" BackgroundColor="White"/>
             <Label Text="{Binding title}" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Image />
             <HorizontalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">

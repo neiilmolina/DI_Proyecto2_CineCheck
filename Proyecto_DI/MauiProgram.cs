@@ -20,6 +20,11 @@ public static class MauiProgram
         builder.Services.AddSingleton<UsuarioRepositorio>(
         s => ActivatorUtilities.CreateInstance<UsuarioRepositorio>(s, ruta)
         );
+        String rutaFavoritos = ObtenerRuta.devolverRuta("usuarios.db");
+
+        builder.Services.AddSingleton<FavoritoRepositorio>(
+        s => ActivatorUtilities.CreateInstance<FavoritoRepositorio>(s, rutaFavoritos)
+        );
 
         return builder.Build();
     }

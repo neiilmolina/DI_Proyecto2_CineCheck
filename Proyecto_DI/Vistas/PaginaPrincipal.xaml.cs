@@ -1,11 +1,10 @@
 using Newtonsoft.Json;
 using Proyecto_DI.Modelo;
-using Proyecto_DI.Repositorio;
 using System.Collections.ObjectModel;
 
 namespace Proyecto_DI.Vistas;
 
-public partial class PaginaPrincipal : ContentPage
+public partial class PaginaPrincipal : Plantillas.Plantilla
 {
     private Usuario usuario = new Usuario();
 	private ObservableCollection<Pelicula> peliculas = new ObservableCollection<Pelicula>();
@@ -56,9 +55,6 @@ public partial class PaginaPrincipal : ContentPage
                 results = peliculas.Where(pelicula => pelicula.original_language.Contains(buscador.Text)).ToList();
 				break;
         }
-
-		ObservableCollection<Pelicula> lista = new ObservableCollection<Pelicula>(results);
-        listaPeliculas.ItemsSource = results;
     }
 
     // Metodo con el picker
@@ -99,7 +95,5 @@ public partial class PaginaPrincipal : ContentPage
     {
         int usuarioId = Preferences.Default.Get(App.usuario_id, -1);
         usuario = App.usuarioRepositorio.obtenerUsuario(usuarioId);
-
-        nombreUsuario.Text = usuario.Nombre;
     }
 }
