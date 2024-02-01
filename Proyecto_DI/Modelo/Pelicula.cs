@@ -21,6 +21,7 @@ namespace Proyecto_DI.Modelo
         public String original_language { get; set; }
         public float vote_average { get; set; }
         public String overview { get; set; }
+        public Color color { get; set; }
     }
 
 }

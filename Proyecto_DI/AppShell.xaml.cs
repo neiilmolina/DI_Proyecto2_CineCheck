@@ -9,5 +9,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(Vistas.Login), typeof(Vistas.Login));
         Routing.RegisterRoute(nameof(Vistas.Registro), typeof(Vistas.Registro));
         Routing.RegisterRoute(nameof(Vistas.PaginaPrincipal), typeof(Vistas.PaginaPrincipal));
+        Routing.RegisterRoute(nameof(Vistas.FavoritosVista), typeof(Vistas.FavoritosVista));
     }
 }

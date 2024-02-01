@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pl:Plantilla xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto_DI.Vistas.FavoritosVista"
+             xmlns:te="clr-namespace:Proyecto_DI.Template"
+             xmlns:pl="clr-namespace:Proyecto_DI.Plantillas">
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Opciones">
+            <MenuFlyoutItem Text="Cerrar Sesión" Clicked="cerrarSesion"/>
+            <MenuFlyoutItem Text="Volver al inicio" Clicked="volverInicio"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <ScrollView Margin="0,0,0,16">
+
+        <VerticalStackLayout>
+            <CollectionView x:Name="listaPeliculas">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <te:Pelicula_Template/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            <VerticalStackLayout x:Name="mensajeFavoritos" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="No hay elementos en favoritos" 
+                       TextColor="Gray" 
+                       HorizontalOptions="Center"
+                       FontSize="Header"/>
+                <Label Text="Añade las películas que más te gusten" 
+                       TextColor="Gray" 
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+            
+
+        </VerticalStackLayout>
+    </ScrollView>
+</pl:Plantilla>

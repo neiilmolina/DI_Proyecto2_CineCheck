@@ -8,7 +8,7 @@
     <Border Stroke="Gray" StrokeThickness="3" Margin="16" Padding="15" HorizontalOptions="FillAndExpand"  WidthRequest="670" MinimumHeightRequest="420" MaximumHeightRequest="620">
         <VerticalStackLayout Spacing="20">
             <Label x:Name="lblPelicula" Text="{Binding id}" IsVisible="false"/>
-            <Button x:Name="btnFavoritos" Text="★" Clicked="cambiarFavoritos" FontSize="Large" HorizontalOptions="End" BorderColor="White" BackgroundColor="White"/>
+            <Button x:Name="btnFavoritos" Text="★" Clicked="cambiarFavoritos" FontSize="Large" HorizontalOptions="End" TextColor="{Binding color}" BackgroundColor="White" BorderColor="White"/>
             <Label Text="{Binding title}" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Image />
             <HorizontalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">

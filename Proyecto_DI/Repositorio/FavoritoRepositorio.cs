@@ -48,7 +48,7 @@ namespace Proyecto_DI.Repositorio
 
             if (lista.Count != 0) 
             {
-                while (cont <= lista.Count && !encontrado)
+                while (cont < lista.Count && !encontrado)
                 {
                     if (lista[cont].Pelicula_id == peliculaId)
                     {
@@ -64,33 +64,19 @@ namespace Proyecto_DI.Repositorio
             return encontrado;
         }
 
-        
-        // Devolver un objeto favorito
-        public Favorito devolverFavorito(int usuarioId, int peliculaId) 
+        public List<int> listaIdPeliculas(int usuarioId)
         {
-            Favorito favorito = null;
-            List<Favorito> lista = listarFavoritos();
+            List<Favorito> lista = filtrarPorUsuario(usuarioId);
+            List<int> ids = new List<int>();
 
-            int cont = 0;
-            bool encontrado = false;
-
-            while (cont <= lista.Count && !encontrado)
+            foreach (var favortito in lista) 
             {
-                if (lista[cont].Usuario_id == usuarioId && lista[cont].Pelicula_id == peliculaId)
-                {
-                    favorito = lista[cont];
-                    encontrado = true;
-                }
-                else
-                {
-                    cont++;
-                }
+                ids.Add(favortito.Pelicula_id);
             }
 
-            return favorito;
-
-
+            return ids;
         }
+
 
         // Añadir 
         public void add(Favorito item) 

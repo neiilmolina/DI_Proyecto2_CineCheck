@@ -7,7 +7,7 @@ namespace Proyecto_DI.Vistas;
 public partial class PaginaPrincipal : Plantillas.Plantilla
 {
     private Usuario usuario = new Usuario();
-	private ObservableCollection<Pelicula> peliculas = new ObservableCollection<Pelicula>();
+	public static ObservableCollection<Pelicula> peliculas = new ObservableCollection<Pelicula>();
 	private String seleccion;
  
 
@@ -29,6 +29,8 @@ public partial class PaginaPrincipal : Plantillas.Plantilla
 
         Resultado resultado = JsonConvert.DeserializeObject<Resultado>(respuesta);
 
+        incializarFavoritos(resultado.results);
+        
         peliculas = resultado.results;
 
 		actualizarLista();
@@ -55,6 +57,9 @@ public partial class PaginaPrincipal : Plantillas.Plantilla
                 results = peliculas.Where(pelicula => pelicula.original_language.Contains(buscador.Text)).ToList();
 				break;
         }
+        ObservableCollection<Pelicula> lista = new ObservableCollection<Pelicula>(results);
+
+        listaPeliculas.ItemsSource = lista;
     }
 
     // Metodo con el picker
@@ -78,11 +83,7 @@ public partial class PaginaPrincipal : Plantillas.Plantilla
 
     private async void listarFavoritos(object sender, EventArgs e)
     {
-        bool respuesta = await DisplayAlert("Cerrar Sesión", "¿Deseas cerrar sesión?", "Si", "No");
-        if (respuesta)
-        {
-            _ = cambiarLogin();
-        }
+       _= cambiarFavoritos();
 
     }
 
@@ -90,10 +91,33 @@ public partial class PaginaPrincipal : Plantillas.Plantilla
     {
         await AppShell.Current.GoToAsync(nameof(Login));
     }
+    
+    private async Task cambiarFavoritos()
+    {
+        await AppShell.Current.GoToAsync(nameof(FavoritosVista));
+    }
 
     private void inicializarUsuario() 
     {
         int usuarioId = Preferences.Default.Get(App.usuario_id, -1);
         usuario = App.usuarioRepositorio.obtenerUsuario(usuarioId);
     }
+
+    private void incializarFavoritos(ObservableCollection<Pelicula> pelis)
+    {
+        List<Favorito> listaF = App.favoritoRepositorio.listarFavoritos();
+
+        foreach (Pelicula item in pelis)
+        {
+            if (listaF.FirstOrDefault(f => f.Pelicula_id == item.id && f.Usuario_id == usuario.Id) != null)
+            {
+                item.color = Color.FromRgba(255, 255, 0, 255);
+            }
+            else
+            {
+                item.color = Colors.Gray;
+            }
+        }
+    }
+
 }

@@ -1,4 +1,5 @@
 using Proyecto_DI.Modelo;
+using System.Collections.ObjectModel;
 using System.Numerics;
 
 namespace Proyecto_DI.Template;
@@ -16,12 +17,8 @@ public partial class Pelicula_Template : ContentView
 	public Pelicula_Template()
 	{
 		InitializeComponent();
-
-        pelicula = new Pelicula();
-        BindingContext = pelicula;
-
         inicializarVariables();
-        inicializarFavoritos();
+       
 	}
 
     private void inicializarVariables() 
@@ -29,11 +26,6 @@ public partial class Pelicula_Template : ContentView
         try
         {
             usuarioId = Preferences.Default.Get(App.usuario_id, -1);
-            lblPelicula.BindingContext = pelicula.id;
-            peliculaId = int.Parse(lblPelicula.Text);
-            System.Diagnostics.Debug.WriteLine("El id es: " + peliculaId);
-
-
         }
         catch (Exception e)
         { 
@@ -42,26 +34,14 @@ public partial class Pelicula_Template : ContentView
 
     }
 
-    private void inicializarFavoritos()
-    {
 
-       favoritos = App.favoritoRepositorio.verPeliculaUsuario(usuarioId, peliculaId);
-
-        if (favoritos)
-        {
-            btnFavoritos.TextColor = Color.FromHex("#F0FF00");
-        }
-        else
-        {
-            btnFavoritos.TextColor = Color.FromHex("#979090");
-        }
-    }
 
     // pasar una lista de ids y mirar si coincide con este id
 
     private async void cambiarFavoritos(object sender, EventArgs e)
     {
-        peliculaId = ( int )( ( Pelicula ) ( ( Microsoft.Maui.Controls.BindableObject )sender ).BindingContext ).id;
+        peliculaId = (int)((Pelicula)((Microsoft.Maui.Controls.BindableObject)sender).BindingContext).id;
+        favoritos = App.favoritoRepositorio.verPeliculaUsuario(usuarioId, peliculaId);
 
         if (!favoritos)
         {

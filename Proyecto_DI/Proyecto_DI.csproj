@@ -65,6 +65,9 @@
 	  <MauiXaml Update="Template\Template.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Vistas\FavoritosVista.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Vistas\Lista.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
