@@ -32,13 +32,13 @@ public partial class FavoritosVista : Plantilla
 
         ObservableCollection<Pelicula>favoritos = new ObservableCollection<Pelicula>(resultados);
 
-        if (favoritos.Count <= 0)
+        if (favoritos.Count == 0)
         {
-            mensajeFavoritos.IsVisible = false;
+            mensajeFavoritos.IsVisible = true;
         }
         else 
         {
-            mensajeFavoritos.IsVisible= true;
+            mensajeFavoritos.IsVisible= false;
         }
 
         listaPeliculas.ItemsSource = favoritos;
